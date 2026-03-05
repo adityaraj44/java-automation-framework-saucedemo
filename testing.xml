@@ -1,0 +1,24 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="AutomationSuite" parallel="tests" thread-count="2">
+
+    <test name="LoginTests">
+
+        <classes>
+            <class name="com.automation.tests.LoginTest"/>
+        </classes>
+
+    </test>
+    <test name="InventoryPageTests">
+
+        <classes>
+            <class name="com.automation.tests.InventoryPageTest"/>
+        </classes>
+
+    </test>
+    <test name="UsersAPI">
+        <classes>
+            <class name="com.automation.api.GetUsersTest"/>
+        </classes>
+    </test>
+</suite>
