@@ -19,17 +19,15 @@ public class CheckoutPage extends BasePage {
     public CheckoutPage validateCheckoutPageAndFields(String fName, String lname, String pcode) {
         WaitUtils.waitForElement(driver, title);
         driver.findElement(title);
-        PauseUtil.pause(1);
         driver.findElement(firstName).sendKeys(fName);
-        PauseUtil.pause(1);
+
         driver.findElement(lastName).sendKeys(lname);
-        PauseUtil.pause(1);
+
         driver.findElement(postalCode).sendKeys(pcode);
         return this;
     }
 
     public CheckoutOverviewPage checkout() {
-        PauseUtil.pause(1);
         driver.findElement(continueCheckout).click();
         return new CheckoutOverviewPage(driver);
     }

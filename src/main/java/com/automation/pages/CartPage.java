@@ -25,7 +25,6 @@ public class CartPage extends BasePage {
     }
 
     public CheckoutPage goToCheckoutPage() {
-        PauseUtil.pause(2);
         driver.findElement(checkoutBtn).click();
         return new CheckoutPage(driver);
     }

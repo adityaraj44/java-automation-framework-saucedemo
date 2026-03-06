@@ -20,11 +20,9 @@ public class CheckoutOverviewPage extends BasePage{
         WaitUtils.waitForElement(driver, overviewTitle);
         driver.findElement(overviewTitle);
         driver.findElement(finalItem);
-        PauseUtil.pause(1);
     }
     public OrderCompletePage validateCancelFinish() {
         driver.findElement(cancel);
-        PauseUtil.pause(1);
         driver.findElement(finish).click();
         return new OrderCompletePage(driver);
     }

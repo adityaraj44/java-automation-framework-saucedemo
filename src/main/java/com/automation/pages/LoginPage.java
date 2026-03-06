@@ -22,12 +22,12 @@ public class LoginPage extends BasePage {
     }
     public InventoryPage login(String user, String pass) {
         WaitUtils.waitForElement(driver, username);
-        PauseUtil.pause(2);
+
         driver.findElement(username).sendKeys(user);
         WaitUtils.waitForElement(driver, password);
-        PauseUtil.pause(2);
+
         driver.findElement(password).sendKeys(pass);
-        PauseUtil.pause(2);
+
         driver.findElement(loginButton).click();
 
         return new InventoryPage(driver);

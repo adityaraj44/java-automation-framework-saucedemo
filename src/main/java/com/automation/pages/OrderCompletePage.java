@@ -21,13 +21,13 @@ public class OrderCompletePage extends BasePage {
     }
 
     public void goToHome() {
-        PauseUtil.pause(2);
+
         driver.findElement(backToHome).click();
     }
 
     public InventoryPage validateHome() {
         WaitUtils.waitForElement(driver, home);
-        PauseUtil.pause(2);
+
         driver.findElement(home);
         return new InventoryPage(driver);
     }

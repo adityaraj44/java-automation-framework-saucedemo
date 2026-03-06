@@ -25,12 +25,12 @@ public class InventoryPage extends BasePage {
     }
     public InventoryPage setAddToCart() {
         WaitUtils.waitForElement(driver, addToCart);
-        PauseUtil.pause(2);
+
         driver.findElement(addToCart).click();
         return this;
     }
     public CartPage goToCartPage() {
-        PauseUtil.pause(1);
+
         driver.findElement(goToCart).click();
         return new CartPage(driver);
     }
