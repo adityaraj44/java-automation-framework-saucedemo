@@ -5,14 +5,14 @@ pipeline {
 
         stage('Start Selenium Grid') {
             steps {
-                bat 'docker compose up -d'
-                bat 'timeout /t 20'
+                sh 'docker compose up -d'
+                sh 'timeout /t 20'
             }
         }
 
         stage('Run Tests') {
             steps {
-                bat 'mvn clean test'
+                sh 'mvn clean test'
             }
         }
 
