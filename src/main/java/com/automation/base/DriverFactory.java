@@ -5,7 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import com.automation.utils.ConfigReader;
 import org.openqa.selenium.chrome.ChromeOptions;
-
+import org.openqa.selenium.remote.RemoteWebDriver;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,8 +16,7 @@ public class DriverFactory {
     public static WebDriver getDriver() {
         if(driver.get() == null) {
             String browser = ConfigReader.get("browser");
-            if(browser.equalsIgnoreCase(browser)) {
-                WebDriverManager.chromedriver().setup();
+            if(browser.equalsIgnoreCase("chrome")) {
                 ChromeOptions options = new ChromeOptions();
                 Map<String, Object> prefs = new HashMap<>();
 
@@ -28,17 +28,34 @@ public class DriverFactory {
 
                 options.addArguments("--disable-notifications");
                 options.addArguments("--disable-infobars");
-                driver.set(new ChromeDriver(options));
+                String execution = ConfigReader.get("execution");
+
+                if(execution.equalsIgnoreCase("remote")) {
+
+                    try {
+                        driver.set(new RemoteWebDriver(
+                                new URL("http://selenium-hub:4444/wd/hub"),
+                                options
+                        ));
+                    } catch (Exception e) {
+                        throw new RuntimeException("Failed to connect to Selenium Grid", e);
+                    }
+
+                } else {
+                    WebDriverManager.chromedriver().setup();
+                    driver.set(new ChromeDriver(options));
+                }
                 driver.get().manage().window().maximize();
             } else {
                 throw new RuntimeException("Browser not supported: " + browser);
             }
+
         }
         return driver.get();
     }
 
     public static void quitDriver() {
-        if(driver != null) {
+        if(driver.get() != null) {
             driver.get().quit();
             driver.remove();
         }
