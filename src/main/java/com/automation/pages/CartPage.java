@@ -5,10 +5,9 @@ import com.automation.utils.WaitUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 
-public class CartPage {
-    WebDriver driver;
+public class CartPage extends BasePage {
     public CartPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     By cartTitle = By.className("title");
@@ -17,22 +16,17 @@ public class CartPage {
     By continueShopping = By.id("continue-shopping");
     By checkoutBtn = By.id("checkout");
 
-    public void validateTitle() {
+    public void validateCart() {
         WaitUtils.waitForElement(driver, cartTitle);
         driver.findElement(cartTitle);
-    }
-
-    public void validateCartItem() {
         driver.findElement(cartItem);
-    }
-
-    public void validateItems() {
         driver.findElement(removeBtn);
         driver.findElement(continueShopping);
     }
 
-    public void goToCheckoutPage() {
+    public CheckoutPage goToCheckoutPage() {
         PauseUtil.pause(2);
         driver.findElement(checkoutBtn).click();
+        return new CheckoutPage(driver);
     }
 }

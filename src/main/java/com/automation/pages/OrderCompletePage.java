@@ -5,10 +5,10 @@ import com.automation.utils.WaitUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 
-public class OrderCompletePage {
-    WebDriver driver;
+public class OrderCompletePage extends BasePage {
+
     public OrderCompletePage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     By completeMsg = By.className("complete-header");
@@ -25,9 +25,10 @@ public class OrderCompletePage {
         driver.findElement(backToHome).click();
     }
 
-    public void validateHome() {
+    public InventoryPage validateHome() {
         WaitUtils.waitForElement(driver, home);
         PauseUtil.pause(2);
         driver.findElement(home);
+        return new InventoryPage(driver);
     }
 }

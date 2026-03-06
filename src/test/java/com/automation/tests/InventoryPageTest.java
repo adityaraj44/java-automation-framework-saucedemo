@@ -11,16 +11,9 @@ public class InventoryPageTest extends BaseTest{
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.openWebsite();
-        loginPage.login("standard_user","secret_sauce");
+        InventoryPage inventoryPage = loginPage.login("standard_user","secret_sauce");
 
-        InventoryPage inventoryPage = new InventoryPage(driver);
-        inventoryPage.validateHeader();
-        inventoryPage.validateTitle();
-        inventoryPage.validateProductList();
-        inventoryPage.setAddToCart();
-        inventoryPage.removeFromCartFromInventoryPage();
-        inventoryPage.setAddToCart();
-        inventoryPage.goToCartPage();
-        System.out.println("Header and Title are validated successfully");
+       inventoryPage.validateInventoy();
+       inventoryPage.setAddToCart().goToCartPage();
     }
 }

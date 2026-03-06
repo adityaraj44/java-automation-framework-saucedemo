@@ -13,17 +13,8 @@ public class CartPageTest extends BaseTest {
     public void cartPage() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.openWebsite();
-        loginPage.login("standard_user","secret_sauce");
+        loginPage.login("standard_user","secret_sauce").setAddToCart().goToCartPage().validateCart();
 
-        InventoryPage inventoryPage = new InventoryPage(driver);
-        inventoryPage.setAddToCart();
-        inventoryPage.goToCartPage();
-
-        CartPage cartPage = new CartPage(driver);
-        cartPage.validateTitle();
-        cartPage.validateCartItem();
-        cartPage.validateItems();
-        cartPage.goToCheckoutPage();
     }
 
 

@@ -10,6 +10,5 @@ public class LoginTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.openWebsite();
         loginPage.login("standard_user","secret_sauce");
-        System.out.println("Logged in successfully");
     }
 }

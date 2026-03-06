@@ -5,10 +5,9 @@ import com.automation.utils.WaitUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 
-public class CheckoutPage {
-    WebDriver driver;
+public class CheckoutPage extends BasePage {
     public CheckoutPage(WebDriver driver) {
-        this.driver=driver;
+        super(driver);
     }
 
     By title = By.className("title");
@@ -17,7 +16,7 @@ public class CheckoutPage {
     By postalCode = By.id("postal-code");
     By continueCheckout = By.id("continue");
 
-    public void validateCheckoutPageAndFields(String fName, String lname, String pcode) {
+    public CheckoutPage validateCheckoutPageAndFields(String fName, String lname, String pcode) {
         WaitUtils.waitForElement(driver, title);
         driver.findElement(title);
         PauseUtil.pause(1);
@@ -26,10 +25,12 @@ public class CheckoutPage {
         driver.findElement(lastName).sendKeys(lname);
         PauseUtil.pause(1);
         driver.findElement(postalCode).sendKeys(pcode);
+        return this;
     }
 
-    public void checkout() {
+    public CheckoutOverviewPage checkout() {
         PauseUtil.pause(1);
         driver.findElement(continueCheckout).click();
+        return new CheckoutOverviewPage(driver);
     }
 }

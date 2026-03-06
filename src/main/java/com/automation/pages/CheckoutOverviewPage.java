@@ -5,11 +5,10 @@ import com.automation.utils.WaitUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 
-public class CheckoutOverviewPage {
-    WebDriver driver;
+public class CheckoutOverviewPage extends BasePage{
 
     public CheckoutOverviewPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     By overviewTitle = By.className("title");
@@ -23,9 +22,10 @@ public class CheckoutOverviewPage {
         driver.findElement(finalItem);
         PauseUtil.pause(1);
     }
-    public void validateCancelFinish() {
+    public OrderCompletePage validateCancelFinish() {
         driver.findElement(cancel);
         PauseUtil.pause(1);
         driver.findElement(finish).click();
+        return new OrderCompletePage(driver);
     }
 }
