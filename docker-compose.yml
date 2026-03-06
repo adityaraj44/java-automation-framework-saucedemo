@@ -27,9 +27,9 @@ services:
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
 
-  automation-tests:
-    build: .
-    depends_on:
-      - selenium-hub
-    environment:
-      - GRID_URL=http://selenium-hub:4444/wd/hub
+#  automation-tests:
+#    build: .
+#    depends_on:
+#      - selenium-hub
+#    environment:
+#      - GRID_URL=http://selenium-hub:4444/wd/hub
