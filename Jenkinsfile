@@ -1,12 +1,16 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven3'
+    }
+
     stages {
 
         stage('Start Grid') {
             steps {
                 bat 'docker compose up -d'
-                bat 'ping -n 20 127.0.0.1 >nul'
+                bat 'ping -n 10 127.0.0.1 >nul'
             }
         }
 
@@ -16,11 +20,11 @@ pipeline {
             }
         }
 
-        stage('Stop Grid') {
-            steps {
-                bat 'docker compose down'
-            }
-        }
+    }
 
+    post {
+        always {
+            bat 'docker compose down'
+        }
     }
 }
