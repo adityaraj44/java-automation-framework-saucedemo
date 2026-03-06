@@ -4,17 +4,15 @@
     <listeners>
         <listener class-name="com.automation.listeners.TestListener"/>
     </listeners>
-    <test name="LoginTests">
-
+    <test name="Chrome Tests">
+        <parameter name="browser" value="chrome" />
         <classes>
             <class name="com.automation.tests.LoginTest"/>
-        </classes>
-
-    </test>
-    <test name="InventoryPageTests">
-
-        <classes>
             <class name="com.automation.tests.InventoryPageTest"/>
+            <class name="com.automation.tests.CartPageTest"/>
+            <class name="com.automation.tests.CheckoutPageTest"/>
+            <class name="com.automation.tests.CheckoutOverviewPageTest"/>
+            <class name="com.automation.tests.OrderCompleteTest"/>
         </classes>
 
     </test>
@@ -23,32 +21,4 @@
 <!--            <class name="com.automation.api.GetUsersTest"/>-->
 <!--        </classes>-->
 <!--    </test>-->
-    <test name="CartPageTests">
-
-        <classes>
-            <class name="com.automation.tests.CartPageTest"/>
-        </classes>
-
-    </test>
-    <test name="CheckoutPageTests">
-
-        <classes>
-            <class name="com.automation.tests.CheckoutPageTest"/>
-        </classes>
-
-    </test>
-    <test name="CheckoutOverviewPageTests">
-
-        <classes>
-            <class name="com.automation.tests.CheckoutOverviewPageTest"/>
-        </classes>
-
-    </test>
-    <test name="OrderCompleteTest">
-
-        <classes>
-            <class name="com.automation.tests.OrderCompleteTest"/>
-        </classes>
-
-    </test>
 </suite>
