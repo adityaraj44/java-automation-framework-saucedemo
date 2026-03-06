@@ -2,11 +2,25 @@ pipeline {
     agent any
 
     stages {
-        stage('Test Jenkinsfile') {
+
+        stage('Start Grid') {
             steps {
-                bat 'echo Jenkinsfile is working'
-                bat 'dir'
+                bat 'docker compose up -d'
+                bat 'timeout /t 20'
             }
         }
+
+        stage('Run Tests') {
+            steps {
+                bat 'mvn clean test'
+            }
+        }
+
+        stage('Stop Grid') {
+            steps {
+                bat 'docker compose down'
+            }
+        }
+
     }
 }
