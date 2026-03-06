@@ -11,13 +11,13 @@ pipeline {
 
         stage('Start Selenium Grid') {
             steps {
-                sh 'docker compose up -d'
+                bat 'docker compose up -d'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'mvn clean test'
+                bat 'mvn clean test'
             }
         }
 
@@ -25,7 +25,7 @@ pipeline {
 
     post {
         always {
-            sh 'docker compose down'
+            bat 'docker compose down'
         }
     }
 }
