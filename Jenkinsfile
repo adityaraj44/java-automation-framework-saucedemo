@@ -2,29 +2,11 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Start Selenium Grid') {
+        stage('Test Jenkinsfile') {
             steps {
-                sh 'docker compose up -d'
-                sh 'timeout /t 20'
+                bat 'echo Jenkinsfile is working'
+                bat 'dir'
             }
-        }
-
-        stage('Run Tests') {
-            steps {
-                sh 'mvn clean test'
-            }
-        }
-
-    }
-
-    post {
-        always {
-            publishHTML([
-                reportDir: 'test-output',
-                reportFiles: 'index.html',
-                reportName: 'HTML Report'
-            ])
         }
     }
 }
