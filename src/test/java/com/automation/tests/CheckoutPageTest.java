@@ -1,26 +1,28 @@
 package com.automation.tests;
 
 import com.automation.base.BaseTest;
+import com.automation.pages.CartPage;
+import com.automation.pages.CheckoutPage;
 import com.automation.pages.InventoryPage;
 import com.automation.pages.LoginPage;
 import org.testng.annotations.Test;
 
-public class InventoryPageTest extends BaseTest{
+public class CheckoutPageTest extends BaseTest {
     @Test
-    public void inventoryPageTest() {
-
+    public void checkoutPageTest() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.openWebsite();
         loginPage.login("standard_user","secret_sauce");
 
         InventoryPage inventoryPage = new InventoryPage(driver);
-        inventoryPage.validateHeader();
-        inventoryPage.validateTitle();
-        inventoryPage.validateProductList();
-        inventoryPage.setAddToCart();
-        inventoryPage.removeFromCartFromInventoryPage();
         inventoryPage.setAddToCart();
         inventoryPage.goToCartPage();
-        System.out.println("Header and Title are validated successfully");
+
+        CartPage cartPage = new CartPage(driver);
+        cartPage.goToCheckoutPage();
+
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.validateCheckoutPageAndFields("aditya","raj","560066");
+        checkoutPage.checkout();
     }
 }

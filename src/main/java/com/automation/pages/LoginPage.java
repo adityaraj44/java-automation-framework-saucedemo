@@ -1,6 +1,7 @@
 package com.automation.pages;
 
 import com.automation.utils.ConfigReader;
+import com.automation.utils.PauseUtil;
 import com.automation.utils.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,9 +22,12 @@ public class LoginPage {
     }
     public void login(String user, String pass) {
         WaitUtils.waitForElement(driver, username);
+        PauseUtil.pause(2);
         driver.findElement(username).sendKeys(user);
         WaitUtils.waitForElement(driver, password);
+        PauseUtil.pause(2);
         driver.findElement(password).sendKeys(pass);
+        PauseUtil.pause(2);
         driver.findElement(loginButton).click();
     }
 }
