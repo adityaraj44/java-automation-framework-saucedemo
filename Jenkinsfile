@@ -3,15 +3,21 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
+        stage('Checkout Code') {
             steps {
-                git 'https://github.com/adityaraj44/java-automation-framework-saucedemo.git'
+                git 'https://github.com/YOUR_REPO.git'
             }
         }
 
         stage('Start Selenium Grid') {
             steps {
                 bat 'docker compose up -d'
+            }
+        }
+
+        stage('Wait for Grid') {
+            steps {
+                bat 'timeout /t 10'
             }
         }
 

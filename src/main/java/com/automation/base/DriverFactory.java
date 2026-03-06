@@ -34,7 +34,7 @@ public class DriverFactory {
 
                     try {
                         driver.set(new RemoteWebDriver(
-                                new URL("http://selenium-hub:4444/wd/hub"),
+                                new URL("http://localhost:4444/wd/hub"),
                                 options
                         ));
                     } catch (Exception e) {
