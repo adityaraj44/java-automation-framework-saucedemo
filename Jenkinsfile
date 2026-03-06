@@ -9,7 +9,7 @@ pipeline {
 
         stage('Start Grid') {
             steps {
-                bat 'docker compose up -d --scale chrome=8 --scale firefox=8
+                bat 'docker compose up -d --scale chrome=8 --scale firefox=8'
                 bat 'ping -n 10 127.0.0.1 >nul'
             }
         }
